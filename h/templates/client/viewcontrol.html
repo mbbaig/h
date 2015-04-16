@@ -1,0 +1,16 @@
+<i class="h-icon-arrow-drop-down"></i>
+<span role="button"
+      class="dropdown-toggle"
+      data-toggle="dropdown">
+      <i ng-class="icon"></i>
+      {{socialview}}
+</span>
+<ul class="dropdown-menu pull-right" role="menu">
+  <li ng-repeat="view in views"
+      class="selected-{{view.selected}}"
+      ng-click="select(view)">
+    <i class="viewIcons" ng-class="view.icon"></i>
+    {{view.socialview}}
+  </li>
+  <li ng-click="">+ New Group</li>
+</ul>
