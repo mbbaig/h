@@ -3,11 +3,11 @@ angular = require('angular')
 
 module.exports = class WidgetController
   this.$inject = [
-    '$scope', 'annotationUI', 'crossframe', 'annotationMapper',
+    '$rootScope', '$scope', 'annotationUI', 'crossframe', 'annotationMapper',
     'streamer', 'streamFilter', 'store'
   ]
   constructor:   (
-     $scope,   annotationUI, crossframe, annotationMapper,
+     $rootScope, $scope,   annotationUI, crossframe, annotationMapper,
      streamer,   streamFilter,   store
   ) ->
     # Tells the view that these annotations are embedded into the owner doc
@@ -73,3 +73,22 @@ module.exports = class WidgetController
       !!($scope.focusedAnnotations ? {})[annotation?.$$tag]
 
     $scope.notOrphan = (container) -> !container?.message?.$orphan
+
+    $scope.filterView = (container) ->
+      console.log $scope.socialview
+      if $rootScope.socialview == 'Public'
+        container?.message?.permissions?.read?[0] == 'group:__world__'
+      else if $rootScope.socialview == 'Personal'
+        container?.message?.permissions?.read?[0] != 'group:__world__'
+
+    $scope.select = (selectedview) ->
+      $rootScope.socialview = selectedview.socialview
+      $scope.icon = selectedview.icon
+    
+    $rootScope.socialview = 'Public'
+    $rootScope.views = [
+        {socialview:'Public', icon:'h-icon-public'}
+        {socialview:'Personal', icon:'h-icon-lock'}
+    ]
+
+    $scope.icon = 'h-icon-public'

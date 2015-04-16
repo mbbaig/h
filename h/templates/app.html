@@ -27,6 +27,7 @@
       <a class="pull-right" href=""
          ng-click="login()"
          ng-switch-when="null">Sign in</a>
+      <div class="dropdown pull-right viewcontrol"></div>
 
       <!-- Searchbar -->
       <div class="simple-search"
@@ -89,6 +90,9 @@
   </script>
   <script type="text/ng-template" id="thread.html">
     {{ include_raw("h:templates/client/thread.html") }}
+  </script>
+  <script type="text/ng-template" id="viewcontrol.html">
+    {{ include_raw("h:templates/client/viewcontrol.html") }}
   </script>
 {% endblock %}
 

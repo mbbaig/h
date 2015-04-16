@@ -148,6 +148,16 @@ ol {
   }
 }
 
+.viewcontrol {
+  margin-right: 1em;
+  font-family: inherit;
+
+  &:after {
+    margin-left: 1em;
+    content: "/";
+  }
+}
+
 .masthead {
   .masthead-heading {
     margin: 0;
