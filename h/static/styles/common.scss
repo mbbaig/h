@@ -194,22 +194,21 @@ html {
     &.selected {
       color: black;
       font-weight: 600;
-      line-height: 1;
       &:before {
         font-size: .7em;
       }
     }
-    &.inactive {
-      font-weight: 400;
-      color: $gray-lighter;
-      cursor: default;
-      &:hover {
-        color: $gray-lighter;
-      }
-      & * {
-        cursor: default;
-      }
-    }
+    // &.inactive {
+    //   font-weight: 400;
+    //   color: $gray-lighter;
+    //   cursor: default;
+    //   &:hover {
+    //     color: $gray-lighter;
+    //   }
+    //   & * {
+    //     cursor: default;
+    //   }
+    // }
 
     & + li {
       border-top: dotted 1px $gray-lighter;

@@ -131,18 +131,6 @@ ol {
     border-radius: 2px;
   }
 
-  .dropdown-toggle {
-    .provider {
-      color: $gray-light;
-      display: none;
-    }
-    &:hover {
-      .provider {
-        display: none;
-      }
-    }
-  }
-
   .dropdown.open .provider {
     display: inline;
   }
