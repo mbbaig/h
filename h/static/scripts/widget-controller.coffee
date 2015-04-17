@@ -75,7 +75,6 @@ module.exports = class WidgetController
     $scope.notOrphan = (container) -> !container?.message?.$orphan
 
     $scope.filterView = (container) ->
-      console.log $scope.socialview
       if $rootScope.socialview == 'Public'
         container?.message?.permissions?.read?[0] == 'group:__world__'
       else if $rootScope.socialview == 'Personal'
@@ -85,6 +84,9 @@ module.exports = class WidgetController
       $rootScope.socialview = selectedview.socialview
       $scope.icon = selectedview.icon
     
+    $scope.$watch (-> $rootScope.socialview), (change) ->
+      console.log "Call something to refresh highlights and tabs."
+
     $rootScope.socialview = 'Public'
     $rootScope.views = [
         {socialview:'Public', icon:'h-icon-public'}
