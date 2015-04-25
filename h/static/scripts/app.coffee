@@ -113,6 +113,7 @@ module.exports = angular.module('h', [
 .directive('tabbable', require('./directive/tabbable'))
 .directive('tabReveal', require('./directive/tab-reveal'))
 .directive('viewcontrol', require('./directive/viewcontrol'))
+.directive('newgroupdialog', require('./directive/newgroup_dialog'))
 
 .filter('converter', require('./filter/converter'))
 .filter('moment', require('./filter/moment'))

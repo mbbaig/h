@@ -100,8 +100,14 @@ module.exports = class AppController
       $scope.search.query = ''
       annotationUI.clearSelectedAnnotations()
 
+    # Dialogs... we might want to clean these up and make them consistent. 
     $scope.dialog = visible: false
-
+    $scope.groupDialog = false
+    $scope.groupName = 'groupName'
+    $scope.showLink = false
+    $scope.groupLink = 
+      "https://hypothes.is/h/00163/" + $scope.groupName
+    
     $scope.search =
       query: $location.search()['q']
 

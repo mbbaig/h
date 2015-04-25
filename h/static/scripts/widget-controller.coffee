@@ -75,10 +75,12 @@ module.exports = class WidgetController
     $scope.notOrphan = (container) -> !container?.message?.$orphan
 
     $scope.filterView = (container) ->
+      # If an annnoation is being edited it should show up in any view.
       if $rootScope.socialview == 'Public'
         container?.message?.permissions?.read?[0] == 'group:__world__'
       else if $rootScope.socialview == 'Personal'
         container?.message?.permissions?.read?[0] != 'group:__world__'
+
 
     $scope.select = (selectedview) ->
       $rootScope.socialview = selectedview.socialview

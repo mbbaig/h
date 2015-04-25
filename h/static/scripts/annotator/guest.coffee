@@ -237,11 +237,6 @@ module.exports = class Guest extends Annotator
       method: "toggleAnnotationSelection"
       params: (a.$$tag for a in annotations)
 
-  updateAnnotations: (annotations) =>
-    @crossframe?.notify
-      method: "updateAnnotations"
-      params: (a.$$tag for a in annotations)
-
   focusAnnotations: (annotations) =>
     @crossframe?.notify
       method: "focusAnnotations"

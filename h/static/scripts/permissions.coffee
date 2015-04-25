@@ -9,6 +9,7 @@
 module.exports = ['auth', (auth) ->
   ALL_PERMISSIONS = {}
   GROUP_WORLD = 'group:__world__'
+  LINK_ONLY = 'group:'
   ADMIN_PARTY = [{
     allow: true
     principal: GROUP_WORLD
@@ -57,6 +58,19 @@ module.exports = ['auth', (auth) ->
 
   ###*
   # @ngdoc method
+  # @name permissions#private
+  #
+  # Sets permissions for a public annotation
+  # Typical use: annotation.permissions = permissions.public()
+  ###
+  group: ->
+    read: [LINK_ONLY]
+    update: [auth.user]
+    delete: [auth.user]
+    admin: [auth.user]
+
+  ###*
+  # @ngdoc method
   # @name permissions#isPublic
   #
   # @param {Object} permissions
@@ -65,6 +79,17 @@ module.exports = ['auth', (auth) ->
   ###
   isPublic: (permissions) ->
     GROUP_WORLD in (permissions?.read or [])
+
+  ###*
+  # @ngdoc method
+  # @name permissions#isGroup
+  #
+  # @param {Object} permissions
+  #
+  # This function determines whether the permissions allow public visibility
+  ###
+  isGroup: (permissions) ->
+    LINK_ONLY in (permissions?.read or [])
 
   ###*
   # @ngdoc method

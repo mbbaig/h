@@ -11,11 +11,13 @@
       <span class="pull-right" ng-switch-when="undefined">⋯</span>
       <div class="dropdown pull-right user-picker">
         <span role="button"
-              class="dropdown-toggle"
-              data-toggle="dropdown">{% raw %}{{ auth.user|persona }}{% endraw %}<!--
-          --><span class="provider" ng-show="auth.user">/{% raw %}{{ auth.user|persona:'provider' }}{% endraw %}</span><!--
-          --><i class="h-icon-arrow-drop-down"></i></span>
+              class="dropdown-toggle" 
+              data-toggle="dropdown">
+              {% raw %}{{ auth.user|persona }}{% endraw %}
+              <i class="h-icon-arrow-drop-down"></i>
+        </span>
         <ul class="dropdown-menu pull-right" role="menu">
+          <li ng-show="auth.user"><a href="">{% raw %}{{ auth.user|persona:'provider' }}{% endraw %}</a></li>
           <li ng-show="auth.user"><a href="" ng-click="dialog.visible='true'">Account</a></li>
           <li><a href="mailto:support@hypothes.is">Feedback</a></li>
           <li><a href="/docs/help" target="_blank">Help</a></li>
@@ -70,7 +72,9 @@
         </div>
       </div>
     </div>
-    <!-- / Dialog -->
+
+    <div newgroupdialog="" ng-show="groupDialog"></div>
+    <!-- / Dialogs -->
 
     <!-- Angular view -->
     <main class="content" ng-view=""></main>
@@ -96,6 +100,9 @@
   </script>
   <script type="text/ng-template" id="viewcontrol.html">
     {{ include_raw("h:templates/client/viewcontrol.html") }}
+  </script>
+  <script type="text/ng-template" id="newgroup_dialog.html">
+    {{ include_raw("h:templates/client/newgroup_dialog.html") }}
   </script>
 {% endblock %}
 
