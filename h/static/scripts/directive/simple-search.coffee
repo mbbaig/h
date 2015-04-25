@@ -1,4 +1,4 @@
-module.exports = ['$http', '$parse', '$rootScope', ($http, $parse, $rootScope) ->
+module.exports = ['$http', '$parse', ($http, $parse) ->
   link: (scope, elem, attr, ctrl) ->
     scope.reset = (event) ->
       event.preventDefault()
@@ -11,9 +11,6 @@ module.exports = ['$http', '$parse', '$rootScope', ($http, $parse, $rootScope) -
 
     scope.$watch (-> $http.pendingRequests.length), (pending) ->
       scope.loading = (pending > 0)
-
-    scope.$watch (-> $rootScope.socialview), (change) ->
-      scope.socialview = $rootScope.socialview.toLowerCase()
 
     scope.$watch 'query', (query) ->
       return if query is undefined
@@ -31,7 +28,7 @@ module.exports = ['$http', '$parse', '$rootScope', ($http, $parse, $rootScope) -
   template: '''
             <form class="simple-search-form" ng-class="!searchtext && 'simple-search-inactive'" name="searchBox" ng-submit="search($event)">
               <input class="simple-search-input" type="text" ng-model="searchtext" name="searchText"
-                     placeholder="{{loading && 'Loading' || ('Search ' + socialview + ' notes')}}…"
+                     placeholder="{{loading && 'Loading' || 'Search notes'}}…"
                      ng-disabled="loading" />
               <span class="simple-search-icon" ng-hide="loading">
                 <i class="h-icon-search"></i>
