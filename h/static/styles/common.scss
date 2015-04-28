@@ -130,7 +130,6 @@ html {
 .form-vertical {
   select, textarea, input, button {
     display: block;
-    // margin-top: .75em;
   }
 }
 
@@ -199,17 +198,6 @@ html {
         font-size: .7em;
       }
     }
-    // &.inactive {
-    //   font-weight: 400;
-    //   color: $gray-lighter;
-    //   cursor: default;
-    //   &:hover {
-    //     color: $gray-lighter;
-    //   }
-    //   & * {
-    //     cursor: default;
-    //   }
-    // }
 
     & + li {
       border-top: dotted 1px $gray-lighter;

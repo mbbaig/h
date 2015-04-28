@@ -58,10 +58,10 @@ module.exports = ['auth', (auth) ->
 
   ###*
   # @ngdoc method
-  # @name permissions#private
+  # @name permissions#group
   #
-  # Sets permissions for a public annotation
-  # Typical use: annotation.permissions = permissions.public()
+  # Sets permissions for a group annotation
+  # Typical use: annotation.permissions = permissions.group()
   ###
   group: ->
     read: [LINK_ONLY]
@@ -86,7 +86,7 @@ module.exports = ['auth', (auth) ->
   #
   # @param {Object} permissions
   #
-  # This function determines whether the permissions allow public visibility
+  # This function determines whether the permissions allow group visibility
   ###
   isGroup: (permissions) ->
     LINK_ONLY in (permissions?.read or [])

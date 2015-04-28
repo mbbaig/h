@@ -76,23 +76,21 @@ module.exports = class WidgetController
 
     $scope.filterView = (container) ->
       # If an annnoation is being edited it should show up in any view.
-      if $rootScope.socialview == 'Public'
-        container?.message?.permissions?.read?[0] == 'group:__world__'
-      else if $rootScope.socialview == 'Personal'
-        container?.message?.permissions?.read?[0] != 'group:__world__'
+      # if $rootScope.socialview == 'Public'
+      #   container?.message?.permissions?.read?[0] == 'group:__world__'
+      # else if $rootScope.socialview == 'Personal'
+      #   container?.message?.permissions?.read?[0] != 'group:__world__'
+      true
 
 
     $scope.select = (selectedview) ->
       $rootScope.socialview = selectedview.socialview
       $scope.icon = selectedview.icon
-    
-    $scope.$watch (-> $rootScope.socialview), (change) ->
-      console.log "Call something to refresh highlights and tabs."
 
-    $rootScope.socialview = 'Public'
+    $rootScope.socialview = 'All'
     $rootScope.views = [
-        {socialview:'Public', icon:'h-icon-public'}
-        {socialview:'Personal', icon:'h-icon-lock'}
+        {socialview:'All', icon:'h-icon-public'}
+        # {socialview:'Personal', icon:'h-icon-lock'}
     ]
 
     $scope.icon = 'h-icon-public'
