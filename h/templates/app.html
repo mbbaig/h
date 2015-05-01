@@ -17,7 +17,7 @@
               <i class="h-icon-arrow-drop-down"></i>
         </span>
         <ul class="dropdown-menu pull-right" role="menu">
-          <li ng-show="auth.user"><a href="">{% raw %}{{ auth.user|persona:'provider' }}{% endraw %}</a></li>
+          <li ng-show="auth.user"><a href="https://hypothes.is" target="_blank">{% raw %}{{ auth.user|persona:'provider' }}{% endraw %}</a></li>
           <li ng-show="auth.user"><a href="" ng-click="dialog.visible='true'">Account</a></li>
           <li><a href="mailto:support@hypothes.is">Feedback</a></li>
           <li><a href="/docs/help" target="_blank">Help</a></li>

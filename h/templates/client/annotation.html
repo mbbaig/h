@@ -97,6 +97,11 @@
 </div>
 <!-- / Tags -->
 
+<div class="annotation-section" ng-if="vm.editing">
+  <!-- Add logic here for this and break it out into a sparate PR. -->
+  <p><i class="h-icon-lock"></i>This annotation is viewable only to you. <a href="">Want to change this?</a></p>
+</div>
+
 <div class="annotation-section form-actions"
         ng-if="vm.editing"
         ng-switch="vm.action">
