@@ -88,7 +88,6 @@ module.exports = class WidgetController
     $rootScope.socialview = 'All'
     $rootScope.views = [
         {socialview:'All', icon:'h-icon-public'}
-        # {socialview:'Personal', icon:'h-icon-lock'}
     ]
 
     $scope.icon = 'h-icon-public'

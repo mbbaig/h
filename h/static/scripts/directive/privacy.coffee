@@ -16,6 +16,9 @@ module.exports = ['localStorage', 'permissions', (localStorage, permissions) ->
 
   isPublic  = (level) -> level == VISIBILITY_PUBLIC
 
+  isGroup  = (level) -> 
+    level != ( VISIBILITY_PRIVATE or VISIBILITY_PUBLIC )
+
   link: (scope, elem, attrs, controller) ->
     return unless controller?
 
@@ -57,6 +60,7 @@ module.exports = ['localStorage', 'permissions', (localStorage, permissions) ->
       controller.$setViewValue level
       controller.$render()
     scope.isPublic = isPublic
+    scope.isGroup = isGroup
 
   require: '?ngModel'
   restrict: 'E'
