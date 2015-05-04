@@ -2,15 +2,15 @@
 <span role="button"
       class="dropdown-toggle"
       data-toggle="dropdown">
-      <i ng-class="icon"></i>
-      {{socialview}}
+      <i ng-class="socialview.icon"></i>
+      {{socialview.name}}
 </span>
 <ul class="dropdown-menu pull-right" role="menu" ng-show="auth.user">
   <li ng-repeat="view in views"
-      class="selected-{{view.selected}}"
+      ng-class="{selected: view.selected}"
       ng-click="select(view)">
     <i class="viewIcons" ng-class="view.icon"></i>
-    {{view.socialview}}
+    {{view.name}}
   </li>
   <li ng-click="groupDialog = true"><i class="h-icon-add"></i> New Group</li>
 </ul>

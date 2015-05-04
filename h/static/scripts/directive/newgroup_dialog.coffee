@@ -10,14 +10,21 @@ module.exports = ['$timeout', '$rootScope', ($timeout, $rootScope) ->
         ## Watch vialinkvisble: when it changes to true, focus input and selection.
         scope.$watch (-> scope.groupDialog), (visble) ->
             if visble
-                $timeout (-> elem.find('#via').focus().select()), 0, false
+                $timeout (-> elem.find('#nameGroup').focus().select()), 0, false
+
+        scope.$watch (-> scope.showLink), (visble) ->
+            if visble
+                $timeout (-> elem.find('#copyLink').focus().select()), 0, false
+
+        scope.groupName = "groupName"
+        scope.showLink = false
 
         scope.newgroup = ->
-        	$rootScope.views.push(
-        		{socialview:scope.groupName, icon:'h-icon-group'}
-        	)
-        	$rootScope.socialview = scope.groupName
-        	scope.icon = 'h-icon-group'
+            $rootScope.socialview.selected = false
+            $rootScope.views.push({name:scope.groupName, icon:'h-icon-group', selected:true})
+            $rootScope.socialview = {name:scope.groupName, icon:'h-icon-group', selected:true}
+            scope.showLink = true
+            scope.groupLink = "https://hypothes.is/g/102498/" + scope.groupName
 
     controller: 'AppController'
     templateUrl: 'newgroup_dialog.html'

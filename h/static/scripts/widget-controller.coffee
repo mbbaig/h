@@ -76,18 +76,13 @@ module.exports = class WidgetController
 
     $scope.filterView = (container) ->
       # If an annnoation is being edited it should show up in any view.
-      if $rootScope.socialview == 'All'
+      if $rootScope.socialview.name == 'All'
         container?.message?.permissions?.read?[0] != 'group:'
-      else if $rootScope.socialview != 'All'
+      else if $rootScope.socialview.name != 'All'
         container?.message?.permissions?.read?[0] == 'group:'
 
-    $scope.select = (selectedview) ->
-      $rootScope.socialview = selectedview.socialview
-      $scope.icon = selectedview.icon
-
-    $rootScope.socialview = 'All'
     $rootScope.views = [
-        {socialview:'All', icon:'h-icon-public'}
+        {name:'All', icon:'h-icon-public', selected:true}
     ]
 
-    $scope.icon = 'h-icon-public'
+    $rootScope.socialview = $rootScope.views[0]

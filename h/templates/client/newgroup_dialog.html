@@ -2,39 +2,34 @@
 	<i class="close h-icon-close"
    	   role="button"
        title="Close"
-       ng-click="groupDialog = false"></i>
+       ng-click="groupDialog = false; showLink = false;"></i>
     <div class="form-vertical tabbable">
 	    <div class="form tab-pane" data-title="New group">
 		    <div ng-hide="showLink">
 		        <div class="form-field">
-			        <p class="form-description">Create a new group and annotate collaboratively.
-			        Take the generated name or give it your own:</p>
-			       	<input id="via" 
-			        	   class="form-input" 
-			       	   	   type="text"
-			       	   	   ng-value="groupName" 
-			        	   name="search"></input>
+			        <p class="form-description">Create a new group and annotate collaboratively. Take the generated name or give it your own:</p>
+			        <input id="nameGroup"
+							class="form-input"
+							type="text"
+							ng-model="groupName"></input>
 		       	</div>
 		       	<div class="form-actions">
 			   		<div class="form-actions-buttons">
-			       		<button class="btn btn-primary" ng-click="newgroup(); showLink=true">Create Group</button>		
+			   			<button class="btn btn-primary" ng-click="newgroup()">Create Group</button>		
 			   		</div>
 			    </div>
 			</div>
 
 			<!-- Get the link -->
 	        <div class="form-field" ng-show="showLink">
-		        <p class="form-description">The link to your group is below, share it with anyone
-		        you would like to annotate this page with:</p>
-		       	<input id="via" 
-		        	   class="form-input" 
-		       	   	   type="text"
-		       	   	   ng-value="groupLink" 
-		        	   name="search"></input>
+		        <p class="form-description">The link to your group is below, share it with anyone you would like to annotate this page with:</p>
+		        <input id="copyLink"
+						class="form-input"
+						type="text"
+						ng-value="groupLink"></input>
 		       	<div class="form-actions">
 			   		<div class="form-actions-message">
-			       		<p><a href="#">Copy link to clipboard</a></p>
-			       		<p><a href="mailto:?subject=Annotate this&body=http://...">Share via email</a></p>
+			   			<p><a href="mailto:?subject=Annotate this&body=http://...">Share via email</a></p>
 			   		</div>
 			    </div>
 			</div>

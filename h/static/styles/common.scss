@@ -172,8 +172,9 @@ html {
   opacity: 0;
   pointer-events: none;
   position: absolute;
-  top: 29px;
+  margin-top: 1px;
   z-index: 2;
+  min-width: 130px;
 
   li:not(.ng-hide) {
     text-align: left;
@@ -221,7 +222,6 @@ html {
     @include smallshadow;
     opacity: 1;
     pointer-events: auto;
-    min-width: 120px;
   }
 }
 
