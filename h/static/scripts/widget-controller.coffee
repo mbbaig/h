@@ -76,7 +76,9 @@ module.exports = class WidgetController
 
     $scope.filterView = (container) ->
       # If an annnoation is being edited it should show up in any view.
-      if $rootScope.socialview.name == 'All'
+      if not container?.message?.permissions?.read?
+        true
+      else if $rootScope.socialview.name == 'All'
         container?.message?.permissions?.read?[0] != 'group:'
       else if $rootScope.socialview.name != 'All'
         container?.message?.permissions?.read?[0] == 'group:'

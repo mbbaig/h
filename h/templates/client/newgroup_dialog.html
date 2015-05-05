@@ -2,7 +2,7 @@
 	<i class="close h-icon-close"
    	   role="button"
        title="Close"
-       ng-click="groupDialog = false; showLink = false;"></i>
+       ng-click="groupDialog.visible = false; showLink = false;"></i>
     <div class="form-vertical tabbable">
 	    <div class="form tab-pane" data-title="New group">
 		    <div ng-hide="showLink">
@@ -26,7 +26,7 @@
 		        <input id="copyLink"
 						class="form-input"
 						type="text"
-						ng-value="groupLink"></input>
+						ng-value="groupLink"f></input>
 		       	<div class="form-actions">
 			   		<div class="form-actions-message">
 			   			<p><a href="mailto:?subject=Annotate this&body=http://...">Share via email</a></p>

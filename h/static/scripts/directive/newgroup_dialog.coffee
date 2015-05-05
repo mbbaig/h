@@ -2,18 +2,16 @@
 # @ngdoc directive
 # @name newgroup Dialog
 # @restrict A
-# @description The dialog that generates a via link to the page h is currently
-# loaded on.
+# @description The dialog that leads to the creation of a new group.
 ###
 module.exports = ['$timeout', '$rootScope', ($timeout, $rootScope) ->
     link: (scope, elem, attrs, ctrl) ->
-        ## Watch vialinkvisble: when it changes to true, focus input and selection.
-        scope.$watch (-> scope.groupDialog), (visble) ->
-            if visble
+        scope.$watch (-> scope.groupDialog.visible), (visible) ->
+            if visible
                 $timeout (-> elem.find('#nameGroup').focus().select()), 0, false
 
-        scope.$watch (-> scope.showLink), (visble) ->
-            if visble
+        scope.$watch (-> scope.showLink), (visible) ->
+            if visible
                 $timeout (-> elem.find('#copyLink').focus().select()), 0, false
 
         scope.groupName = "groupName"

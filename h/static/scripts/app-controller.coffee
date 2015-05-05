@@ -101,7 +101,7 @@ module.exports = class AppController
       annotationUI.clearSelectedAnnotations()
 
     $scope.dialog = visible: false
-    $scope.groupDialog = false
+    $scope.groupDialog = visible: false
     
     $scope.search =
       query: $location.search()['q']

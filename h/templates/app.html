@@ -46,7 +46,8 @@
 
   <!-- Wrapper -->
   <div id="wrapper" whenscrolled="loadMore(10)">
-    <!-- Dialog -->
+
+    <!-- Dialogs -->
     <div class="content ng-cloak" ng-if="dialog.visible">
       <div id="dialog" class="sheet">
         <i class="close h-icon-close"
@@ -73,7 +74,7 @@
       </div>
     </div>
 
-    <div newgroupdialog="" ng-show="groupDialog"></div>
+    <div newgroupdialog="" ng-show="groupDialog.visible"></div>
     <!-- / Dialogs -->
 
     <!-- Angular view -->
