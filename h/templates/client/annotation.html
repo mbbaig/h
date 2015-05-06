@@ -139,17 +139,6 @@
     <button class="small btn-clean"
             ng-click="vm.reply()"
             ><i class="h-icon-reply btn-icon"></i> Reply</button>
-    <span class="share-dialog-wrapper">
-      <button class="small btn-clean"
-              ng-click="share($event)"
-              ><i class="h-icon-share btn-icon"></i> Share</button>
-      <span class="share-dialog" ng-click="$event.stopPropagation()">
-      <a class="h-icon-share"
-          target="_blank"
-          ng-href="{{vm.annotationURI}}"></a>
-        <input type="text" value="{{vm.annotationURI}}" readonly>
-      </span>
-    </span>
     <button class="small btn-clean"
             ng-show="vm.authorize('update')"
             ng-click="vm.edit()"

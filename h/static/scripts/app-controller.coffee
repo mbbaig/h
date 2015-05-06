@@ -46,6 +46,7 @@ module.exports = class AppController
     oncancel = ->
       $scope.dialog.visible = false
 
+    $scope.dialog = visible: false
     $scope.viaLinkVisible = false
 
     # Check to see if we are on the stream page.
@@ -105,8 +106,6 @@ module.exports = class AppController
     $scope.clearSelection = ->
       $scope.search.query = ''
       annotationUI.clearSelectedAnnotations()
-
-    $scope.dialog = visible: false
 
     $scope.search =
       query: $location.search()['q']

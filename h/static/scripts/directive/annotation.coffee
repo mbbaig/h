@@ -330,17 +330,6 @@ module.exports = [
           scope.$evalAsync ->
             ctrl.save()
 
-      scope.share = (event) ->
-        $container = angular.element(event.currentTarget).parent()
-        $container.addClass('open').find('input').focus().select()
-
-        # We have to stop propagation here otherwise this click event will
-        # re-close the share dialog immediately.
-        event.stopPropagation()
-
-        $document.one('click', (event) -> $container.removeClass('open'))
-        return
-
       # Keep track of edits going on in the thread.
       if counter?
         # Expand the thread if descendants are editing.
