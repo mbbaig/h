@@ -29,6 +29,15 @@
          ng-click="login()"
          ng-switch-when="null">Sign in</a>
 
+      <!-- Share this view -->
+      <span class="share-via-link">
+        <i class="h-icon-share" 
+           title="Share this view"
+           ng-hide="isStream" 
+           ng-click="viaLinkVisible = true"></i>
+      </span>
+      <!-- / Share this view -->
+
       <!-- Searchbar -->
       <div class="simple-search"
            query="search.query"
@@ -41,7 +50,7 @@
 
   <!-- Wrapper -->
   <div id="wrapper" whenscrolled="loadMore(10)">
-    <!-- Dialog -->
+    <!-- Account Dialog -->
     <div class="content ng-cloak" ng-if="dialog.visible">
       <div id="dialog" class="sheet">
         <i class="close h-icon-close"
@@ -67,11 +76,11 @@
         </div>
       </div>
     </div>
-    <!-- / Dialog -->
+    <!-- / Account Dialog -->
 
-    <!-- Via Link Dialog -->
+    <!-- Share View Dialog -->
     <div via-link-dialog="" ng-show="viaLinkVisible"></div>
-    <!-- / Via Link Dialog -->
+    <!-- / Share Dialog -->
 
     <!-- Angular view -->
     <main class="content" ng-view=""></main>
