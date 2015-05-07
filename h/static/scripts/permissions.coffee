@@ -9,7 +9,7 @@
 module.exports = ['auth', (auth) ->
   ALL_PERMISSIONS = {}
   GROUP_WORLD = 'group:__world__'
-  LINK_ONLY = 'group:'
+  LINK_ONLY = 'linkonly'
   ADMIN_PARTY = [{
     allow: true
     principal: GROUP_WORLD

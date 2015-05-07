@@ -52,11 +52,11 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
 
     controller.$render = ->
       unless controller.$modelValue.read?.length
-        name = localStorage.getItem VISIBILITY_KEY
-        if $rootScope.currentview == 'All'
+        if $rootScope.socialview.name == 'All'
+          name = localStorage.getItem VISIBILITY_KEY
           name ?= VISIBILITY_PUBLIC
         else
-          name ?= VISIBILITY_GROUP
+          name = VISIBILITY_GROUP
         level = getLevel(name)
         controller.$setViewValue level
 
@@ -69,11 +69,12 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
       controller.$render()
     scope.isPublic = isPublic
     scope.isGroup = isGroup
+    scope.viewnamelist = ['All']
 
-    scope.$watch (-> $rootScope.views), (views) ->
-      for view in $rootScope.views
-        if view.name != 'All'
-          levels.push {name: VISIBILITY_GROUP, text: view.name, icon:'h-icon-group'}
+    for view in $rootScope.views
+      if view.name not in scope.viewnamelist
+        scope.viewnamelist.push view.name
+        levels.push {name: VISIBILITY_GROUP, text: view.name, icon:'h-icon-group'}
 
   require: '?ngModel'
   restrict: 'E'
