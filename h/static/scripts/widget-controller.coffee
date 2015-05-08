@@ -77,12 +77,21 @@ module.exports = class WidgetController
     $scope.filterView = (container) ->
       # If an annnoation is being edited it should show up in any view.
       if not container?.message?.permissions?.read?
-        true
+        return true
       else if $rootScope.socialview.name == 'All'
-        container?.message?.permissions?.read?[0] != 'group:'
+        # Filter out group annotations.
+        re = /group/
+        !re.test(container?.message?.tags)
       else if $rootScope.socialview.name != 'All'
-        container?.message?.permissions?.read?[0] == 'group:'
-
+        # console.log $rootScope.socialview.name
+        # console.log container?.message?.tags?[0]?
+        # debugger
+        # if container?.message?.tags?[0] == undefined
+        #   return false
+        # else
+        str1 = "group:" + $rootScope.socialview.name
+        re2 = new RegExp(str1, "g");
+        re2.test(container?.message?.tags)
     $rootScope.views = [
         {name:'All', icon:'h-icon-public', selected:true}
     ]

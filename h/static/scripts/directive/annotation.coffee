@@ -164,8 +164,13 @@ AnnotationController = [
         return flash.info('Please add text or a tag before publishing.')
 
       # Update stored tags with the new tags of this annotation
+      if $rootScope.level.name != 'public' or 'private'
+        if $rootScope.socialview.name != 'All'
+          @annotation.tags.push { text:"group:" + $rootScope.socialview.name }
+
       newTags = @annotation.tags.filter (tag) ->
         tag.text not in (model.tags or [])
+
       tags.store(newTags)
 
       angular.extend model, @annotation,
@@ -261,6 +266,10 @@ AnnotationController = [
         @showDiff ?= diffFlags.shouldShowDiff
       else
         @showDiff = undefined
+
+    $scope.filtertags = (tag) ->
+      re = /group/
+      !re.test(tag.text)
 
     updateTimestamp = (repeat=false) =>
       @timestamp = time.toFuzzyString model.updated

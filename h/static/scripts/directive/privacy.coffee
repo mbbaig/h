@@ -2,7 +2,7 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
   VISIBILITY_KEY ='hypothesis.visibility'
   VISIBILITY_PUBLIC = 'public'
   VISIBILITY_PRIVATE = 'private'
-  VISIBILITY_GROUP = 'group'
+  VISIBILITY_GROUP = $rootScope.socialview.name
   viewnamelist = ['All']
 
   $rootScope.levels = [
@@ -40,7 +40,7 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
       if isPublic(privacy.name)
         newPermissions = permissions.public()
       else if isGroup(privacy.name)
-        newPermissions = permissions.group()
+        newPermissions = permissions.public()
       else
         newPermissions = permissions.private()
 
@@ -61,6 +61,7 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
         level = getLevel(name)
         controller.$setViewValue level
 
+      $rootScope.level = controller.$viewValue
       scope.level = controller.$viewValue
 
     scope.levels = $rootScope.levels
