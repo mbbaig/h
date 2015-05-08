@@ -3,14 +3,15 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
   VISIBILITY_PUBLIC = 'public'
   VISIBILITY_PRIVATE = 'private'
   VISIBILITY_GROUP = 'group'
+  viewnamelist = ['All']
 
-  levels = [
+  $rootScope.levels = [
     {name: VISIBILITY_PUBLIC, text: 'Public', icon:'h-icon-public'}
     {name: VISIBILITY_PRIVATE, text: 'Only Me', icon:'h-icon-lock'}
   ]
 
   getLevel = (name) ->
-    for level in levels
+    for level in $rootScope.levels
       if level.name == name
         return level
     undefined
@@ -62,19 +63,18 @@ module.exports = ['localStorage', 'permissions', '$rootScope', (localStorage, pe
 
       scope.level = controller.$viewValue
 
-    scope.levels = levels
+    scope.levels = $rootScope.levels
     scope.setLevel = (level) ->
       localStorage.setItem VISIBILITY_KEY, level.name
       controller.$setViewValue level
       controller.$render()
     scope.isPublic = isPublic
     scope.isGroup = isGroup
-    scope.viewnamelist = ['All']
 
     for view in $rootScope.views
-      if view.name not in scope.viewnamelist
-        scope.viewnamelist.push view.name
-        levels.push {name: VISIBILITY_GROUP, text: view.name, icon:'h-icon-group'}
+      if view.name not in viewnamelist
+        viewnamelist.push view.name
+        $rootScope.levels.push {name: VISIBILITY_GROUP, text: view.name, icon:'h-icon-group'}
 
   require: '?ngModel'
   restrict: 'E'
