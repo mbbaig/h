@@ -144,9 +144,14 @@ def stream(context, request):
 
 @view_config(renderer='annotations_atom', route_name='stream_atom')
 def stream_atom(request):
+    params = dict(request.params)
+
+    if params.get("limit", 1001) > 1000:
+        params["limit"] = 1000
+
     try:
         annotations = request.api_client.get(
-            "/search", params={"limit": 1000})["rows"]
+            "/search", params=params)["rows"]
     except api_client.ConnectionError as err:
         raise httpexceptions.HTTPServiceUnavailable(err)
     except api_client.Timeout as err:
